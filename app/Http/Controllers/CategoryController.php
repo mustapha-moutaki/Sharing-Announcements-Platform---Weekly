@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Http\Requests\CategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -27,18 +28,14 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-        ]);
-    
-        // Remove slug logic
+        
         Category::create([
             'name' => $request->name,
         ]);
     
-        return redirect()->route('categories.index');
+        return redirect()->route('categories.index')->with('success', 'Category created successfully!');;
     }
     
 
@@ -66,9 +63,6 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        // Validate the incoming request data
-        $request->validate([
-            'name' => 'required|string|max:255|unique:categories,name,' . $category->id,]);
 
         // Update the category with the new data
         $category->update([
