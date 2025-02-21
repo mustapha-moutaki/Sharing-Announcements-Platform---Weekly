@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Http\Requests\CategoryRequest;
 
-class CategoryController extends Controller
-{
+class CategoryController extends Controller{
     /**
      * Display a listing of the resource.
      */
@@ -37,11 +36,8 @@ class CategoryController extends Controller
     
         return redirect()->route('categories.index')->with('success', 'Category created successfully!');;
     }
-    
-
-    
-
-
+     
+      
     /**
      * Display the specified resource.
      */
