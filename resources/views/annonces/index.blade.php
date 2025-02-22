@@ -3,11 +3,11 @@
 @section('title', 'List of Listings')
 
 @section('content')
-    <div class="flex justify-end mb-8">
+    <!-- <div class="flex justify-end mb-8">
         <a href="{{ route('annonces.create') }}" class="bg-blue-600 text-white px-6 py-3 text-lg rounded-xl shadow-lg hover:bg-blue-700 transition">
             <i class="fas fa-plus"></i> Add Listing
         </a>
-    </div>
+    </div> -->
 
     <div class="space-y-8">
         @foreach ($annonces as $annonce)
