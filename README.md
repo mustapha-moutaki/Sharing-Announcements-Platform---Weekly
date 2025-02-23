@@ -13,7 +13,7 @@ The goal of this project is to enable users to create, manage, and interact with
 - **Testing and development**: Use artisan tools, seeders, factories, and REPL (Tinker).
 
 ---
-![Project Screenshot](public/storage/images/eventtech.png)
+![Project Screenshot](public/storage/images/tech.jpg)
 
 ## Technologies and Tools 🛠
 
