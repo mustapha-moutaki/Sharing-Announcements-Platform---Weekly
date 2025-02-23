@@ -13,7 +13,7 @@ The goal of this project is to enable users to create, manage, and interact with
 - **Testing and development**: Use artisan tools, seeders, factories, and REPL (Tinker).
 
 ---
-![Project Screenshot]([public/storage/images/tech.jpg](https://github.com/mustapha-moutaki/Sharing-Announcements-Platform---Weekly/blob/e6aa8b7f99f5e78e02d02e155c6b44760e8eb52b/kingmorder.png))
+![Project Screenshot](https://github.com/mustapha-moutaki/Sharing-Announcements-Platform---Weekly/blob/286955ea381a2d532d2e468341ecce9d3b034827/kingmorder.png)
 
 ## Technologies and Tools 🛠
 
