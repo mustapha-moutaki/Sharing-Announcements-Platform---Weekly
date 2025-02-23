@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Annonce;
+use App\Models\Comment;
 use App\Http\Requests\AnnonceRequest;
 use Illuminate\Support\Facades\Storage;
 
@@ -15,8 +16,11 @@ class AnnonceController extends Controller
      */
     public function index()
     {
+        // $annonces = Annonce::paginate(10);
+        // $comments = Comment::all(); 
+        $annonces = Annonce::with('comments')->paginate(10);
         $categories = Category::all(); 
-        $annonces = Annonce::paginate(10);
+        
         return view ('annonces.index', compact('annonces', 'categories'));
     }
 

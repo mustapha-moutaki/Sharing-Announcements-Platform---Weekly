@@ -3,11 +3,6 @@
 @section('title', 'List of Listings')
 
 @section('content')
-    <!-- <div class="flex justify-end mb-8">
-        <a href="{{ route('annonces.create') }}" class="bg-blue-600 text-white px-6 py-3 text-lg rounded-xl shadow-lg hover:bg-blue-700 transition">
-            <i class="fas fa-plus"></i> Add Listing
-        </a>
-    </div> -->
 
     <div class="space-y-8">
         @foreach ($annonces as $annonce)
@@ -57,13 +52,18 @@
                     <button class="hover:text-blue-600 flex items-center space-x-2">
                         <i class="far fa-thumbs-up"></i> <span>Like</span>
                     </button>
-                    <button class="hover:text-blue-600 flex items-center space-x-2">
+                    <button onclick="toggleCommentSection({{ $annonce->id }})" class="hover:text-blue-600 flex items-center space-x-2">
                         <i class="far fa-comment"></i> <span>Comment</span>
                     </button>
                     <button class="hover:text-blue-600 flex items-center space-x-2">
                         <i class="fas fa-share"></i> <span>Share</span>
                     </button>
                 </div>
+
+                <!-- Comment Section -->
+                @include('comments.index', ['annonce' => $annonce])
+
+
             </div>
         @endforeach
     </div>
@@ -73,12 +73,13 @@
         {{ $annonces->links() }}
     </div>
 
-    <!-- JavaScript for Dropdown -->
+    <!-- JavaScript for Dropdown and Comments -->
     <script>
         function toggleMenu(button) {
             let menu = button.nextElementSibling;
             menu.classList.toggle('hidden');
         }
+
         document.addEventListener("click", function(event) {
             let menus = document.querySelectorAll(".relative div.absolute");
             menus.forEach(menu => {
@@ -87,5 +88,15 @@
                 }
             });
         });
+
+        function toggleCommentSection(annonceId) {
+            let commentSection = document.getElementById('comment-section-' + annonceId);
+            if (commentSection.classList.contains('hidden')) {
+                commentSection.classList.remove('hidden');
+            } else {
+                commentSection.classList.add('hidden');
+            }
+        }
     </script>
+
 @endsection

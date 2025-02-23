@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AnnonceController;
+use App\Http\Controllers\CommentController; 
 
 
 Route::get('/', function () {
@@ -20,9 +21,15 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-
+    Route::resource('categories', CategoryController::class);
     Route::resource('annonces', AnnonceController::class);
+    // Route::resource('comments', CommentController::class);
+// routes/web.php
+    Route::resource('comments', CommentController::class);
+
+
+
 });
-Route::resource('categories', CategoryController::class);
+
 
 require __DIR__.'/auth.php';
