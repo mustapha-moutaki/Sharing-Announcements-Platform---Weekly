@@ -28,7 +28,7 @@ The goal of this project is to enable users to create, manage, and interact with
   - Eloquent ORM for data manipulation
 
 ---
-![Project Screenshot](public/storage/images/kingmorder.png)
+![Project Screenshot]({{ asset('storage/images/kingmorder.png') }})
 ## Project Architecture 📌
 
 ### 1️⃣ User Management (users)
