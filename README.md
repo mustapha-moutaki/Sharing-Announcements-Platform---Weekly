@@ -28,7 +28,7 @@ The goal of this project is to enable users to create, manage, and interact with
   - Eloquent ORM for data manipulation
 
 ---
-
+![Project Screenshot](https://github.com/mustapha-moutaki/Sharing-Announcements-Platform---Weekly/blob/633e7db8ba58f2b2d43bf22e4a5ff793d01efe06/eventtech.png)
 ## Project Architecture 📌
 
 ### 1️⃣ User Management (users)
