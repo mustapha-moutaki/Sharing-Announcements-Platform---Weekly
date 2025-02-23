@@ -30,13 +30,25 @@ class CommentController extends Controller
     public function store(CommentRequest $request)
     {
         // Create a new comment
-        Comment::create([
-            'annonce_id' => $request->annonce_id,
-            'content' => $request->content,
-        ]);
+        // Comment::create([
+        //     'annonce_id' => $request->annonce_id,
+        //     'content' => $request->content,
+        // ]);
 
-        // Redirect back with a success message
-        return back()->with('success', 'Comment added successfully!');
+        // // Redirect back with a success message
+        // return back()->with('success', 'Comment added successfully!');
+
+         // Create a new comment
+    Comment::create([
+        'content' => $request->input('content'),
+        'user_id' => auth()->user()->id, // Ensure the user is authenticated
+        'annonce_id' => $request->input('annonce_id'),
+        'created_at' => now(),
+        'updated_at' => now(),
+    ]);
+
+    // Redirect or return a response
+    return redirect()->route('annonces.index')->with('success', 'Comment added successfully!');
     }
 
     /**
@@ -72,6 +84,6 @@ class CommentController extends Controller
         $comment->delete();
 
         // Redirect to the comments index with a success message
-        return redirect()->route('comments.index')->with('success', 'Comment deleted successfully');
+        return redirect()->route('annonces.index')->with('success', 'Comment deleted successfully');
     }
 }
