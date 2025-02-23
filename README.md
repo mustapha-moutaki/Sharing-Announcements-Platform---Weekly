@@ -1,4 +1,3 @@
-![Project Screenshot](public/storage/images/kingmorder.png)
 # Weekly - Ads Platform
 
 Weekly is a web platform where users can post, view, and comment on ads. The application is built using **Laravel 11** and follows best practices for robust and secure development.
@@ -14,7 +13,7 @@ The goal of this project is to enable users to create, manage, and interact with
 - **Testing and development**: Use artisan tools, seeders, factories, and REPL (Tinker).
 
 ---
-![Project Screenshot](public/storage/images/tech.jpg)
+![Project Screenshot]([public/storage/images/tech.jpg](https://github.com/mustapha-moutaki/Sharing-Announcements-Platform---Weekly/blob/e6aa8b7f99f5e78e02d02e155c6b44760e8eb52b/kingmorder.png))
 
 ## Technologies and Tools 🛠
 
