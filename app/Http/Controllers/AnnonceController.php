@@ -18,6 +18,7 @@ class AnnonceController extends Controller
     {
         // $annonces = Annonce::paginate(10);
         // $comments = Comment::all(); 
+        // $user = auth()->user();
         $annonces = Annonce::with('comments')->paginate(10);
         $categories = Category::all(); 
         

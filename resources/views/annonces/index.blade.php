@@ -10,6 +10,7 @@
                 
                 <!-- Post Header -->
                 <div class="flex justify-between items-center mb-4">
+                    
                     <div class="flex items-center space-x-4">
                         <img src="https://i.pravatar.cc/60" class="w-14 h-14 rounded-full">
                         <div>

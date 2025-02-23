@@ -1,66 +1,197 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Weekly - Ads Platform
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Weekly is a web platform where users can post, view, and comment on ads. The application is built using **Laravel 11** and follows best practices for robust and secure development.
 
-## About Laravel
+## Project Goal 🎯
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+The goal of this project is to enable users to create, manage, and interact with ads. The main features include:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **User management**: Secure authentication with **Laravel Breeze/Jetstream**.
+- **Full CRUD for ads**: Create, read, update, and delete (with **soft delete**).
+- **Category management**: Categorize ads into different categories.
+- **Comments**: Add comments to each ad.
+- **Testing and development**: Use artisan tools, seeders, factories, and REPL (Tinker).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
+![Project Screenshot](public/images/eventtech.png)
 
-## Learning Laravel
+## Technologies and Tools 🛠
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **Framework**: Laravel 11 (latest stable version)
+- **Database**: MySQL / PostgreSQL
+- **Frontend**: Blade + Tailwind CSS (via Laravel Breeze / Jetstream)
+- **Authentication**: Laravel Breeze / Jetstream / UI
+- **Development tools**:
+  - `php artisan make:model -mcr` (Models, Migrations, Controllers, Requests)
+  - `php artisan make:seeder` & `php artisan make:factory` (Test data)
+  - `php artisan tinker` (REPL for testing queries)
+  - Eloquent ORM for data manipulation
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+---
+![Project Screenshot](public/images/kingmorder.png)
+## Project Architecture 📌
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 1️⃣ User Management (users)
 
-## Laravel Sponsors
+- **Model**: `User`
+- **Fields**:
+  - `id` (PK)
+  - `name`
+  - `email` (unique)
+  - `password`
+  - `role` (admin, user) (bonus)
+  - `timestamps`
+- **Features**:
+  - Sign-up / Login
+  - Profile management
+  - Middleware to restrict certain pages
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+### 2️⃣ Ads Management (annonces)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+- **Model**: `Annonce`
+- **Fields**:
+  - `id` (PK)
+  - `title`
+  - `description`
+  - `price` (optional)
+  - `image` (optional)
+  - `user_id` (FK → users)
+  - `category_id` (FK → categories)
+  - `status` (active, draft, archived)
+  - `deleted_at` (Soft Delete)
+  - `timestamps`
+- **Features**:
+  - Display and create ads
+  - Edit and delete (soft delete)
+  - Pagination (->paginate(10))
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 3️⃣ Category Management (categories)
 
-## Code of Conduct
+- **Model**: `Categorie`
+- **Fields**:
+  - `id` (PK)
+  - `name` (unique)
+  - `slug` (SEO-friendly)
+  - `timestamps`
+- **Features**:
+  - Display categories
+  - Link an ad to a category
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+### 4️⃣ Comments Management (comments)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- **Model**: `Commentaire`
+- **Fields**:
+  - `id` (PK)
+  - `content`
+  - `user_id` (FK → users)
+  - `annonce_id` (FK → annonces)
+  - `timestamps`
+- **Features**:
+  - Add a comment to an ad
+  - Delete own comments
+  - Validation system before submission
 
-## License
+---
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Artisan Commands Used 🛠
+
+1. **Generate Models and Migrations**:
+   ```bash
+   php artisan make:model Annonce -mcr
+   php artisan make:model Categorie -mcr
+   php artisan make:model Commentaire -mcr
+Add Factories and Seeders:
+
+Create a seeder to populate the database with test data:
+bash
+Copy
+Edit
+php artisan make:seeder AnnonceSeeder
+php artisan make:seeder CategorieSeeder
+php artisan make:seeder CommentaireSeeder
+Create a factory to generate random data:
+bash
+Copy
+Edit
+php artisan make:factory AnnonceFactory
+php artisan make:factory CategorieFactory
+php artisan make:factory CommentaireFactory
+Use Tinker (REPL) for testing queries:
+
+bash
+Copy
+Edit
+php artisan tinker
+Best Practices ✅
+User input validation: Use Form Requests to validate data before submission.
+Middleware: Secure pages with middleware to restrict access.
+Soft Delete: Use soft delete to avoid permanent deletion of ads.
+Eloquent Relationships: Use Eloquent relationships to manage the connections between models (User, Ad, Comment, Category).
+Installation 📦
+Prerequisites
+PHP >= 8.0
+Composer
+Laravel 11
+Database (MySQL / PostgreSQL)
+Installation Steps
+Clone the repository:
+
+bash
+Copy
+Edit
+git clone https://github.com/your-username/weekly.git
+cd weekly
+Install dependencies:
+
+bash
+Copy
+Edit
+composer install
+Configure the .env file: Copy the .env.example file to .env:
+
+bash
+Copy
+Edit
+cp .env.example .env
+Configure your database and other parameters in .env.
+
+Generate the application key:
+
+bash
+Copy
+Edit
+php artisan key:generate
+Run migrations:
+
+bash
+Copy
+Edit
+php artisan migrate
+Run seeders to add test data:
+
+bash
+Copy
+Edit
+php artisan db:seed
+Start the development server:
+
+bash
+Copy
+Edit
+php artisan serve
+Access the Application
+Visit http://localhost:8000 in your browser.
+
+Contributing 🤝
+If you would like to contribute to this project, follow these steps:
+
+Fork the repository.
+Create a new branch (git checkout -b feature/my-feature).
+Make your changes.
+Submit a pull request detailing the changes made.
