@@ -1,3 +1,4 @@
+![Project Screenshot](public/storage/images/kingmorder.png)
 # Weekly - Ads Platform
 
 Weekly is a web platform where users can post, view, and comment on ads. The application is built using **Laravel 11** and follows best practices for robust and secure development.
@@ -28,7 +29,7 @@ The goal of this project is to enable users to create, manage, and interact with
   - Eloquent ORM for data manipulation
 
 ---
-![Project Screenshot]({{ asset('storage/images/kingmorder.png') }})
+
 ## Project Architecture 📌
 
 ### 1️⃣ User Management (users)
@@ -75,7 +76,7 @@ The goal of this project is to enable users to create, manage, and interact with
 - **Fields**:
   - `id` (PK)
   - `name` (unique)
-  - `slug` (SEO-friendly)
+  - `slug` (SEO-friendly)//optional
   - `timestamps`
 - **Features**:
   - Display categories
@@ -145,7 +146,7 @@ Clone the repository:
 bash
 Copy
 Edit
-git clone https://github.com/your-username/weekly.git
+git clone https://github.com/mustapha-moutaki/weekly.git
 cd weekly
 Install dependencies:
 
